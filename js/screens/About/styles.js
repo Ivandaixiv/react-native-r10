@@ -1,17 +1,9 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   content: {
-    textAlign: 'center',
-  },
-  header: {
-    height: 50,
-    backgroundColor: 'red',
-  },
-  logo: {
+    // flex: 1,
     justifyContent: 'center',
-    margin: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
+    alignItems: 'center',
   },
 });
 export default styles;
