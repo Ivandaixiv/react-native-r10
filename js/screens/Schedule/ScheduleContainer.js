@@ -13,13 +13,28 @@ export default class ScheduleContainer extends Component {
             allSessions {
               id
               description
+              location
+              speaker {
+                id
+                bio
+                image
+                name
+                url
+              }
+              startTime
+              title
             }
           }
         `}>
         {({loading, error, data}) => {
-          if (loading) return <Text>Loading</Text>;
+          if (loading) return <Text>Loading...</Text>;
           if (error) return <Text>Error</Text>;
-          return <Schedule navigation={this.props.navigation} data={data} />;
+          return (
+            <Schedule
+              navigation={this.props.navigation}
+              allSessions={data.allSessions}
+            />
+          );
         }}
       </Query>
     );
