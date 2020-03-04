@@ -7,7 +7,6 @@ import Speaker from './screens/Speaker';
 import Schedule from './screens/Schedule';
 import Session from './screens/Session';
 import RootNav from './navigation';
-import styles from './config/styles';
 
 export default class App extends Component {
   render() {

@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Button} from 'react-native';
 import {Header} from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const GradientHeader = props => (
   <View style={{backgroundColor: 'white', overflow: 'hidden'}}>
@@ -15,9 +16,20 @@ const GradientHeader = props => (
   </View>
 );
 export const sharedScreenOptions = navigation => ({
-  headerBackTitle: null,
+  headerBackTitleVisible: false,
   header: props => <GradientHeader {...props} />,
   headerStyle: {
     backgroundColor: 'transparent',
   },
+});
+export const sharedBackOptions = ({navigation}) => ({
+  headerLeft: () => (
+    <MaterialCommunityIcons
+      name="chevron-left"
+      onPress={() => navigation.goBack()}
+      title="Back"
+      color="#fff"
+      size={35}
+    />
+  ),
 });

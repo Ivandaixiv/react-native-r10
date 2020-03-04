@@ -6,19 +6,23 @@ import MapScreen from '../screens/Map';
 import FavesScreen from '../screens/Faves';
 import AboutScreen from '../screens/About';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {sharedScreenOptions} from './config';
+import {sharedScreenOptions, sharedBackOptions} from './config';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 const ScheduleStack = createStackNavigator();
 const MapStack = createStackNavigator();
 const FavesStack = createStackNavigator();
 const AboutStack = createStackNavigator();
 const BottomTabNav = createBottomTabNavigator();
 
-const ScheduleStackScreens = () => (
+const ScheduleStackScreens = props => (
   <ScheduleStack.Navigator screenOptions={sharedScreenOptions}>
     <ScheduleStack.Screen name="Schedule" component={ScheduleScreen} />
-    <ScheduleStack.Screen name="Session" component={SessionScreen} />
+    <ScheduleStack.Screen
+      name="Session"
+      component={SessionScreen}
+      options={sharedBackOptions}
+      navigation={props.navigation}
+    />
   </ScheduleStack.Navigator>
 );
 
@@ -31,7 +35,11 @@ const MapStackScreens = () => (
 const FavesStackScreens = () => (
   <FavesStack.Navigator screenOptions={sharedScreenOptions}>
     <FavesStack.Screen name="Faves" component={FavesScreen} />
-    <FavesStack.Screen name="Session" component={SessionScreen} />
+    <FavesStack.Screen
+      name="Session"
+      component={SessionScreen}
+      options={sharedBackOptions}
+    />
   </FavesStack.Navigator>
 );
 
