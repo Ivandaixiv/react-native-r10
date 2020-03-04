@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, SectionList} from 'react-native';
 import styles from './styles';
+import moment from 'moment';
 
 // Helper to format GraphQL data into section list data
 export const formatSessionData = sessions => {
@@ -15,17 +16,34 @@ export const formatSessionData = sessions => {
     .sort((a, b) => a.title - b.title);
 };
 
-const Schedule = ({navigation, allSessions}) => {
-  console.log(allSessions);
+const Schedule = ({
+  navigation,
+  allSessions,
+  addFaveSession,
+  getFavedSessionIds,
+  removeFaveSession,
+}) => {
   return (
     <View>
       <SectionList
         sections={formatSessionData(allSessions)}
         renderItem={({item}) => (
-          <View style={styles.session}>
+          <TouchableOpacity
+            style={styles.session}
+            onPress={() => {
+              navigation.navigate('Session', {
+                session: item,
+                addFaveSession,
+                getFavedSessionIds,
+                removeFaveSession,
+              });
+            }}>
             <Text>{item.title}</Text>
             <Text>{item.location}</Text>
-          </View>
+          </TouchableOpacity>
+        )}
+        renderSectionHeader={({section}) => (
+          <Text>{moment(section.title).format('LT')}</Text>
         )}
         keyExtractor={item => item.id}
       />
