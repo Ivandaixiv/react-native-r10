@@ -10,6 +10,7 @@ export default class ScheduleContainer extends Component {
     return (
       <FavesContext.Consumer>
         {({addFaveSession, getFavedSessionIds, removeFaveSession, faveIds}) => (
+          /* TODO Put this query in its own variable */
           <Query
             query={gql`
               {
