@@ -35,11 +35,9 @@ export default class ScheduleContainer extends Component {
               console.log('Faveids: ', faveIds);
               return (
                 <Schedule
+                  faveIds={faveIds}
                   navigation={this.props.navigation}
                   allSessions={data.allSessions}
-                  addFaveSession={addFaveSession}
-                  getFavedSessionIds={getFavedSessionIds}
-                  removeFaveSession={removeFaveSession}
                 />
               );
             }}

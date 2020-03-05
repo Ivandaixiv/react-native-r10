@@ -1,28 +1,44 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import moment from 'moment';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Session = ({route, navigation}) => {
-  const {
-    addFaveSession,
-    getFavedSessionIds,
-    removeFaveSession,
-    session,
-  } = route.params;
+const Session = ({
+  route,
+  navigation,
+  faveIds,
+  addFaveSession,
+  getFavedSessionIds,
+  removeFaveSession,
+}) => {
+  const {session} = route.params;
   return (
     <View>
-      {console.log('Route', route)}
       <Text>{session.location}</Text>
+      <Text>
+        {faveIds.includes(session.id, 0) ? (
+          <MaterialCommunityIcons name="heart" color="#cf392a" />
+        ) : null}
+      </Text>
       <Text>{session.title}</Text>
       <Text>{moment(session.startTime).format('LT')}</Text>
       <Text>{session.location}</Text>
       <Text>Presented By: {session.speaker.name}</Text>
-      <TouchableOpacity
-        onPress={() => {
-          addFaveSession(session.id);
-        }}>
-        <Text>Add To Faves</Text>
-      </TouchableOpacity>
+      {!faveIds.includes(session.id, 0) ? (
+        <TouchableOpacity
+          onPress={() => {
+            addFaveSession(session.id);
+          }}>
+          <Text>Add To Faves</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          onPress={() => {
+            removeFaveSession(session.id);
+          }}>
+          <Text>Remove From Faves</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

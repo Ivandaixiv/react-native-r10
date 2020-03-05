@@ -1,7 +1,14 @@
 import React from 'react';
-import {Text, TouchableOpacity, View, SectionList} from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  SectionList,
+  ScrollView,
+  View,
+} from 'react-native';
 import styles from './styles';
 import moment from 'moment';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Helper to format GraphQL data into section list data
 export const formatSessionData = sessions => {
@@ -16,15 +23,9 @@ export const formatSessionData = sessions => {
     .sort((a, b) => a.title - b.title);
 };
 
-const Schedule = ({
-  navigation,
-  allSessions,
-  addFaveSession,
-  getFavedSessionIds,
-  removeFaveSession,
-}) => {
+const Schedule = ({faveIds, navigation, allSessions}) => {
   return (
-    <View>
+    <ScrollView>
       <SectionList
         sections={formatSessionData(allSessions)}
         renderItem={({item}) => (
@@ -33,13 +34,17 @@ const Schedule = ({
             onPress={() => {
               navigation.navigate('Session', {
                 session: item,
-                addFaveSession,
-                getFavedSessionIds,
-                removeFaveSession,
               });
             }}>
-            <Text>{item.title}</Text>
-            <Text>{item.location}</Text>
+            <View>
+              <Text>{item.title}</Text>
+              <Text>{item.location}</Text>
+            </View>
+            <Text>
+              {faveIds.includes(item.id, 0) ? (
+                <MaterialCommunityIcons name="heart" color="#cf392a" />
+              ) : null}
+            </Text>
           </TouchableOpacity>
         )}
         renderSectionHeader={({section}) => (
@@ -61,7 +66,7 @@ const Schedule = ({
         }}>
         <Text>Go To Speaker --></Text>
       </TouchableOpacity> */}
-    </View>
+    </ScrollView>
   );
 };
 export default Schedule;

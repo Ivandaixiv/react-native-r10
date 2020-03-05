@@ -40,6 +40,7 @@ class FavesProvider extends Component {
   removeFaveSession = async sessionId => {
     try {
       await deleteFave(sessionId);
+      this.getFavedSessionIds();
     } catch (e) {
       throw new Error(e);
     }
