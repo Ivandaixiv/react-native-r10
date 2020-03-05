@@ -6,6 +6,7 @@ const Speaker = ({speaker}) => {
   console.log('Speaker.js:', speaker);
   return (
     <ScrollView>
+      {/* TODO gesture on android to slide down the modal and add the x button */}
       <Text>About the Speaker</Text>
       <View style={styles.speaker}>
         <Image source={{uri: `${speaker.image}`}} style={styles.profile} />

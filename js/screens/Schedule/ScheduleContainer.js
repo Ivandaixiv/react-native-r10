@@ -9,7 +9,7 @@ export default class ScheduleContainer extends Component {
   render() {
     return (
       <FavesContext.Consumer>
-        {({addFaveSession, getFavedSessionIds, removeFaveSession, faveIds}) => (
+        {({faveIds}) => (
           /* TODO Put this query in its own variable */
           <Query
             query={gql`
@@ -33,7 +33,6 @@ export default class ScheduleContainer extends Component {
             {({loading, error, data}) => {
               if (loading) return <Text>Loading...</Text>;
               if (error) return <Text>Error</Text>;
-              console.log('Faveids: ', faveIds);
               return (
                 <Schedule
                   faveIds={faveIds}

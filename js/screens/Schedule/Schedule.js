@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  TouchableOpacity,
-  SectionList,
-  ScrollView,
-  View,
-} from 'react-native';
+import {Text, TouchableOpacity, SectionList, View} from 'react-native';
 import styles from './styles';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -25,7 +19,7 @@ export const formatSessionData = sessions => {
 
 const Schedule = ({faveIds, navigation, allSessions}) => {
   return (
-    <ScrollView>
+    <View>
       <SectionList
         sections={formatSessionData(allSessions)}
         renderItem={({item}) => (
@@ -50,23 +44,10 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
         renderSectionHeader={({section}) => (
           <Text>{moment(section.title).format('LT')}</Text>
         )}
+        stickySectionHeadersEnabled={false}
         keyExtractor={item => item.id}
       />
-
-      {/* <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Session');
-        }}>
-        <Text>Go To Session --></Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('Speaker');
-        }}>
-        <Text>Go To Speaker --></Text>
-      </TouchableOpacity> */}
-    </ScrollView>
+    </View>
   );
 };
 export default Schedule;
