@@ -13,7 +13,7 @@ class SessionContainer extends Component {
           <Session
             faveIds={faveIds}
             navigation={this.props.navigation}
-            route={this.props.route}
+            session={this.props.route.params.session}
             addFaveSession={addFaveSession}
             getFavedSessionIds={getFavedSessionIds}
             removeFaveSession={removeFaveSession}

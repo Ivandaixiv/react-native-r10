@@ -5,14 +5,13 @@ import SessionScreen from '../screens/Session';
 import MapScreen from '../screens/Map';
 import FavesScreen from '../screens/Faves';
 import AboutScreen from '../screens/About';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {sharedScreenOptions, sharedBackOptions} from './config';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
 const ScheduleStack = createStackNavigator();
 const MapStack = createStackNavigator();
 const FavesStack = createStackNavigator();
 const AboutStack = createStackNavigator();
-const BottomTabNav = createBottomTabNavigator();
 
 const ScheduleStackScreens = props => (
   <ScheduleStack.Navigator screenOptions={sharedScreenOptions}>
@@ -49,37 +48,14 @@ const AboutStackScreens = () => (
   </AboutStack.Navigator>
 );
 
-const BottomTabNavScreens = props => (
-  <BottomTabNav.Navigator
-    tabBarOptions={{
-      activeTintColor: 'white',
-      inactiveTintColor: '#999999',
-      labelStyle: {fontSize: 10, fontFamily: 'Montserrat'},
-      style: {backgroundColor: 'black'},
-    }}
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color, size}) => {
-        let iconName;
+const Drawer = createDrawerNavigator();
 
-        if (route.name === 'Schedule') {
-          iconName = focused ? 'calendar-blank' : 'calendar-blank-outline';
-        } else if (route.name === 'Map') {
-          iconName = focused ? 'map' : 'map-outline';
-        } else if (route.name === 'Faves') {
-          iconName = focused ? 'heart' : 'heart-outline';
-        } else if (route.name === 'About') {
-          iconName = focused ? 'information' : 'information-outline';
-        }
-        return (
-          <MaterialCommunityIcons name={iconName} size={size} color={color} />
-        );
-      },
-    })}>
-    <BottomTabNav.Screen name="Schedule" component={ScheduleStackScreens} />
-    <BottomTabNav.Screen name="Map" component={MapStackScreens} />
-    <BottomTabNav.Screen name="Faves" component={FavesStackScreens} />
-    <BottomTabNav.Screen name="About" component={AboutStackScreens} />
-  </BottomTabNav.Navigator>
+const DrawerNav = props => (
+  <Drawer.Navigator>
+    <Drawer.Screen name="Schedule" component={ScheduleStackScreens} />
+    <Drawer.Screen name="Map" component={MapStackScreens} />
+    <Drawer.Screen name="Faves" component={FavesStackScreens} />
+    <Drawer.Screen name="About" component={AboutStackScreens} />
+  </Drawer.Navigator>
 );
-
-export default BottomTabNavScreens;
+export default DrawerNav;

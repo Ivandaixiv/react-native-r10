@@ -4,14 +4,13 @@ import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Session = ({
-  route,
+  session,
   navigation,
   faveIds,
   addFaveSession,
   getFavedSessionIds,
   removeFaveSession,
 }) => {
-  const {session} = route.params;
   return (
     <View>
       <Text>{session.location}</Text>
@@ -23,7 +22,13 @@ const Session = ({
       <Text>{session.title}</Text>
       <Text>{moment(session.startTime).format('LT')}</Text>
       <Text>{session.location}</Text>
-      <Text>Presented By: {session.speaker.name}</Text>
+      <Text>Presented By: </Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Speaker', {speaker: session.speaker});
+        }}>
+        <Text>{session.speaker.name}</Text>
+      </TouchableOpacity>
       {!faveIds.includes(session.id, 0) ? (
         <TouchableOpacity
           onPress={() => {
