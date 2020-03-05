@@ -3,7 +3,8 @@ import Speaker from './Speaker';
 
 class SpeakerContainer extends Component {
   render() {
-    return <Speaker />;
+    const {speaker} = this.props.route.params;
+    return <Speaker speaker={speaker} />;
   }
 }
 export default SpeakerContainer;

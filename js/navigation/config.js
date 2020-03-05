@@ -24,6 +24,7 @@ const MenuButton = ({navigation}) => {
       onPress={() => {
         navigation.toggleDrawer();
       }}
+      style={{marginLeft: 15}}
     />
   );
 };
@@ -33,6 +34,7 @@ export const sharedScreenOptions = props => ({
   headerStyle: {
     backgroundColor: 'transparent',
   },
+  headerTintColor: 'white',
   headerLeft: () =>
     Platform.select({
       android: <MenuButton navigation={props.navigation} />,
