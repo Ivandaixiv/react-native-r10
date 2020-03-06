@@ -3,19 +3,7 @@ import {Text, TouchableOpacity, SectionList, View} from 'react-native';
 import styles from './styles';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-// Helper to format GraphQL data into section list data
-export const formatSessionData = sessions => {
-  return sessions
-    .reduce((acc, curr) => {
-      const timeExists = acc.find(section => section.title === curr.startTime);
-      timeExists
-        ? timeExists.data.push(curr)
-        : acc.push({title: curr.startTime, data: [curr]});
-      return acc;
-    }, [])
-    .sort((a, b) => a.title - b.title);
-};
+import formatSessionData from '../../config/helper';
 
 const Schedule = ({faveIds, navigation, allSessions}) => {
   return (
@@ -30,6 +18,7 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
                 session: item,
               });
             }}>
+            {/* TODO defaults the one with no speaker */}
             <View>
               <Text>{item.title}</Text>
               <Text>{item.location}</Text>

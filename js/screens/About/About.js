@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View, Image} from 'react-native';
 import styles from './styles';
-import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 
 const About = ({data}) => {
   return (
-    <View style={styles.content}>
+    <ScrollView style={styles.content}>
       <Image
         source={require('../../assets/images/r10_logo.png')}
         style={styles.logo}
@@ -19,21 +19,17 @@ const About = ({data}) => {
         Vancouver, BC
       </Text>
       <Text>Code of Conduct</Text>
-      <FlatList
-        data={data}
-        renderItem={({item}) => (
-          <View>
-            <TouchableOpacity>
-              {/* TODO If true/false dispaly + or -  */}
-              <Text>{item.title}</Text>
-            </TouchableOpacity>
-            <Text>{item.description}</Text>
-          </View>
-        )}
-        keyExtractor={item => item.id}
-      />
+      {data.map(item => (
+        <View key={item.id}>
+          <TouchableOpacity>
+            {/* TODO If true/false dispaly + or -  */}
+            <Text>{item.title}</Text>
+          </TouchableOpacity>
+          <Text>{item.description}</Text>
+        </View>
+      ))}
       <Text>&copy; Ivan Dai 2020</Text>
-    </View>
+    </ScrollView>
   );
 };
 export default About;
