@@ -7,7 +7,11 @@ import formatSessionData from '../../config/helper';
 
 const Faves = ({faveIds, navigation, sessions}) => {
   console.log('sessions:', sessions);
-  return (
+  return sessions.length <= 0 ? (
+    <View style={styles.empty}>
+      <Text>You haven't faved any sessions yet.</Text>
+    </View>
+  ) : (
     <View>
       <SectionList
         sections={formatSessionData(sessions)}

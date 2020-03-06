@@ -7,5 +7,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
   },
+  empty: {
+    flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
 });
 export default styles;
