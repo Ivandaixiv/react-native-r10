@@ -3,6 +3,7 @@ import About from './About';
 import {Text} from 'react-native';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
+import Loader from '../../components/Loader';
 
 const GET_ALL_CONDUCTS = gql`
   {
@@ -24,7 +25,7 @@ class AboutContainer extends Component {
     return (
       <Query query={GET_ALL_CONDUCTS}>
         {({loading, error, data}) => {
-          if (loading) return <Text>Loading...</Text>;
+          if (loading) return <Loader />;
           if (error) return <Text>{error}</Text>;
           return <About data={data.allConducts} />;
         }}

@@ -4,6 +4,7 @@ import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
 import {Text} from 'react-native';
 import {FavesContext} from '../../context/FavesContext';
+import Loader from '../../components/Loader';
 
 export default class ScheduleContainer extends Component {
   render() {
@@ -31,7 +32,7 @@ export default class ScheduleContainer extends Component {
               }
             `}>
             {({loading, error, data}) => {
-              if (loading) return <Text>Loading...</Text>;
+              if (loading) return <Loader />;
               if (error) return <Text>Error</Text>;
               return (
                 <Schedule

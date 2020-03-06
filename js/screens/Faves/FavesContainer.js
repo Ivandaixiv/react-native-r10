@@ -4,6 +4,7 @@ import {Text} from 'react-native';
 import {Query} from '@apollo/react-components';
 import {gql} from 'apollo-boost';
 import {FavesContext} from '../../context/FavesContext';
+import Loader from '../../components/Loader';
 
 const GET_ALL_SESSION = gql`
   {
@@ -30,7 +31,7 @@ class FavesContainer extends Component {
         {({faveIds}) => (
           <Query query={GET_ALL_SESSION}>
             {({loading, error, data}) => {
-              if (loading) return <Text>Loading...</Text>;
+              if (loading) return <Loader />;
               if (error) return <Text>{error}</Text>;
               console.log('This is the data: ', data);
               console.log('This is the props: ', this.props);
