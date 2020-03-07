@@ -1,7 +1,7 @@
-import React from 'react';
-import {Text, View, Image} from 'react-native';
+import React, {useState} from 'react';
+import {Text, Image, ScrollView} from 'react-native';
 import styles from './styles';
-import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
+import ConductItem from '../../components/Conduct';
 
 const About = ({data}) => {
   return (
@@ -20,13 +20,7 @@ const About = ({data}) => {
       </Text>
       <Text>Code of Conduct</Text>
       {data.map(item => (
-        <View key={item.id}>
-          <TouchableOpacity>
-            {/* TODO If true/false dispaly + or -  */}
-            <Text>{item.title}</Text>
-          </TouchableOpacity>
-          <Text>{item.description}</Text>
-        </View>
+        <ConductItem key={item.id} item={item} />
       ))}
       <Text>&copy; Ivan Dai 2020</Text>
     </ScrollView>
