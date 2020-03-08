@@ -19,21 +19,24 @@ if (Platform.OS === 'android') {
 
 const Conduct = ({item}) => {
   const [spinIcon] = useState(new Animated.Value(0));
+  const [plusOpacity] = useState(new Animated.Value(0));
+  const [minusOpacity] = useState(new Animated.Value(0));
   const [textHeight, setTextHeight] = useState(0);
   const [isOpen, setOpen] = useState(false);
 
   const animate = () => {
+    const createAnimation = (value, duration, easing, delay = 0) => {
+      return Animated.timing(value, {
+        toValue: 1,
+        duration,
+        easing,
+        delay,
+      });
+    };
+
     if (isOpen === false) {
       console.log('Opens Text');
       spinIcon.setValue(0);
-      const createAnimation = (value, duration, easing, delay = 0) => {
-        return Animated.timing(value, {
-          toValue: 1,
-          duration,
-          easing,
-          delay,
-        });
-      };
       LayoutAnimation.configureNext({
         duration: 200,
         create: {
@@ -51,12 +54,16 @@ const Conduct = ({item}) => {
           property: 'opacity', // also scaleXY
         },
       });
-      Animated.parallel([createAnimation(spinIcon, 2000, Easing.ease)]).start();
-
       setTextHeight(100);
+      Animated.parallel([
+        createAnimation(spinIcon, 500, Easing.ease),
+        createAnimation(plusOpacity, 500, Easing.ease),
+        createAnimation(minusOpacity, 500, Easing.ease),
+      ]).start();
       setOpen(true);
     } else {
       console.log('Closes Text');
+      spinIcon.setValue(0);
       LayoutAnimation.configureNext({
         duration: 200,
         create: {
@@ -65,6 +72,14 @@ const Conduct = ({item}) => {
           springDamping: 0.7,
         },
       });
+      Animated.parallel([
+        createAnimation(spinIcon, 500, Easing.ease),
+        createAnimation(plusOpacity, 500, Easing.ease),
+        createAnimation(minusOpacity, 500, Easing.ease),
+      ]).start();
+      minusOpacity.setValue(0);
+
+      plusOpacity.setValue(0);
       setTextHeight(0);
       setOpen(false);
     }
@@ -75,16 +90,39 @@ const Conduct = ({item}) => {
     outputRange: ['0deg', '360deg'],
   });
 
+  const plusFade = plusOpacity.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+
+  const minusFade = minusOpacity.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1],
+  });
+
   return (
     <TouchableOpacity
       onPress={() => {
         animate();
       }}>
       {/* TODO If true/false dispaly + or -  */}
-      <Animated.View style={{transform: [{rotateY: spin}]}}>
+
+      <Animated.View
+        style={{
+          ...styles.animatedIcon,
+          opacity: plusFade,
+          transform: [{rotate: spin}],
+        }}>
         <MaterialCommunityIcons name="plus" />
       </Animated.View>
-      <MaterialCommunityIcons name="minus" />
+      <Animated.View
+        style={{
+          ...styles.animatedIcon,
+          opacity: minusFade,
+          transform: [{rotate: spin}],
+        }}>
+        <MaterialCommunityIcons name="minus" />
+      </Animated.View>
       <Text>{item.title}</Text>
       <Text style={{height: textHeight}}>{item.description}</Text>
     </TouchableOpacity>
