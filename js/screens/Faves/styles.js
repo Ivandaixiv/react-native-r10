@@ -5,12 +5,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#e6e6e6',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   empty: {
     flex: 1,
     justifyContent: 'center',
     alignSelf: 'center',
+  },
+  time: {
+    paddingLeft: 10,
+    backgroundColor: '#e6e6e6',
+  },
+  location: {
+    color: '#999999',
   },
 });
 export default styles;

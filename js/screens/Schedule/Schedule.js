@@ -20,10 +20,9 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
               });
             }}>
             <>
-              {/* TODO defaults the one with no speaker */}
               <View>
                 <Text>{item.title}</Text>
-                <Text>{item.location}</Text>
+                <Text style={styles.location}>{item.location}</Text>
               </View>
               <Text>
                 {faveIds.includes(item.id, 0) ? (
@@ -34,7 +33,7 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
           </TouchableHighlight>
         )}
         renderSectionHeader={({section}) => (
-          <Text>{moment(section.title).format('LT')}</Text>
+          <Text style={styles.time}>{moment(section.title).format('LT')}</Text>
         )}
         stickySectionHeadersEnabled={false}
         keyExtractor={item => item.id}

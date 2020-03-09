@@ -105,8 +105,6 @@ const Conduct = ({item}) => {
       onPress={() => {
         animate();
       }}>
-      {/* TODO If true/false dispaly + or -  */}
-
       <Animated.View
         style={{
           ...styles.animatedIcon,

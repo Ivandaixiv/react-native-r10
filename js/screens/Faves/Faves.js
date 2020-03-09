@@ -26,7 +26,7 @@ const Faves = ({faveIds, navigation, sessions}) => {
               }}>
               <View>
                 <Text>{item.title}</Text>
-                <Text>{item.location}</Text>
+                <Text style={styles.location}>{item.location}</Text>
               </View>
               <Text>
                 {faveIds.includes(item.id, 0) ? (
@@ -39,7 +39,9 @@ const Faves = ({faveIds, navigation, sessions}) => {
         renderSectionHeader={
           ({section}) => (
             // section.data.includes(faveIds, 0) ? (
-            <Text>{moment(section.title).format('LT')}</Text>
+            <Text style={styles.time}>
+              {moment(section.title).format('LT')}
+            </Text>
           )
           // ) : null
         }

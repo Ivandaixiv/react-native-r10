@@ -29,7 +29,6 @@ const Session = ({
         }}>
         <Text>{session.speaker.name}</Text>
       </TouchableOpacity>
-      {/* TODO MAKE THESE INTO BUTTONS INSTEAD OF TOUCHABLEOPACITY */}
       {!faveIds.includes(session.id, 0) ? (
         <TouchableOpacity
           onPress={() => {
