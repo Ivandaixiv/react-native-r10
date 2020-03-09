@@ -9,3 +9,5 @@ TODO List
 /_ TODO Put this query in its own variable _/
 font sizes
 android side
+README file
+Button on the speaker page
