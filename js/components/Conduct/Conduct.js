@@ -32,6 +32,7 @@ const Conduct = ({item}) => {
         duration,
         easing,
         delay,
+        useNativeDriver: true,
       });
     };
 
@@ -112,7 +113,7 @@ const Conduct = ({item}) => {
             style={{
               ...styles.animatedIcon,
               opacity: plusFade,
-              transform: [{rotate: spin}],
+              transform: [{rotate: spin}, {perspective: 1000}],
             }}>
             <MaterialCommunityIcons color="#9963ea" name="plus" />
           </Animated.View>
@@ -120,7 +121,7 @@ const Conduct = ({item}) => {
             style={{
               ...styles.animatedIcon,
               opacity: minusFade,
-              transform: [{rotate: spin}],
+              transform: [{rotate: spin}, {perspective: 1000}],
             }}>
             <MaterialCommunityIcons color="#9963ea" name="minus" />
           </Animated.View>

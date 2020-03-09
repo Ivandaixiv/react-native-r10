@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   animatedIcon: {
     position: 'absolute',
+    marginTop: 2,
     width: 10,
     height: 10,
   },
