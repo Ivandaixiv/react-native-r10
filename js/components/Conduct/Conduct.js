@@ -7,6 +7,7 @@ import {
   LayoutAnimation,
   Animated,
   Easing,
+  View,
 } from 'react-native';
 import styles from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -105,23 +106,27 @@ const Conduct = ({item}) => {
       onPress={() => {
         animate();
       }}>
-      <Animated.View
-        style={{
-          ...styles.animatedIcon,
-          opacity: plusFade,
-          transform: [{rotate: spin}],
-        }}>
-        <MaterialCommunityIcons name="plus" />
-      </Animated.View>
-      <Animated.View
-        style={{
-          ...styles.animatedIcon,
-          opacity: minusFade,
-          transform: [{rotate: spin}],
-        }}>
-        <MaterialCommunityIcons name="minus" />
-      </Animated.View>
-      <Text>{item.title}</Text>
+      <View style={styles.conductContainer}>
+        <View style={styles.iconContainer}>
+          <Animated.View
+            style={{
+              ...styles.animatedIcon,
+              opacity: plusFade,
+              transform: [{rotate: spin}],
+            }}>
+            <MaterialCommunityIcons color="#9963ea" name="plus" />
+          </Animated.View>
+          <Animated.View
+            style={{
+              ...styles.animatedIcon,
+              opacity: minusFade,
+              transform: [{rotate: spin}],
+            }}>
+            <MaterialCommunityIcons color="#9963ea" name="minus" />
+          </Animated.View>
+        </View>
+        <Text style={styles.conduct}>{item.title}</Text>
+      </View>
       <Text style={{height: textHeight}}>{item.description}</Text>
     </TouchableOpacity>
   );
