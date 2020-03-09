@@ -1,7 +1,16 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Button,
+  StyleSheet,
+} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import styles from './styles';
 
 const Session = ({
   session,
@@ -12,38 +21,65 @@ const Session = ({
   removeFaveSession,
 }) => {
   return (
-    <View>
-      <Text>{session.location}</Text>
-      <Text>
-        {faveIds.includes(session.id, 0) ? (
-          <MaterialCommunityIcons name="heart" color="#cf392a" />
-        ) : null}
-      </Text>
-      <Text>{session.title}</Text>
-      <Text>{moment(session.startTime).format('LT')}</Text>
-      <Text>{session.location}</Text>
-      <Text>Presented By: </Text>
+    <View style={styles.container}>
+      <View style={styles.infoTop}>
+        <Text style={styles.grayText}>{session.location}</Text>
+        <Text>
+          {faveIds.includes(session.id, 0) ? (
+            <MaterialCommunityIcons name="heart" color="#cf392a" />
+          ) : null}
+        </Text>
+      </View>
+      <Text style={styles.title}>{session.title}</Text>
+      <Text style={styles.time}>{moment(session.startTime).format('LT')}</Text>
+      <Text style={styles.description}>{session.description}</Text>
+      <Text style={styles.grayText}>Presented By: </Text>
       <TouchableOpacity
+        style={styles.speaker}
         onPress={() => {
           navigation.navigate('Speaker', {speaker: session.speaker});
         }}>
+        <Image
+          source={{uri: `${session.speaker.image}`}}
+          style={styles.profile}
+        />
         <Text>{session.speaker.name}</Text>
       </TouchableOpacity>
-      {!faveIds.includes(session.id, 0) ? (
-        <TouchableOpacity
-          onPress={() => {
-            addFaveSession(session.id);
-          }}>
-          <Text>Add To Faves</Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          onPress={() => {
-            removeFaveSession(session.id);
-          }}>
-          <Text>Remove From Faves</Text>
-        </TouchableOpacity>
-      )}
+      <View style={styles.buttonContainer}>
+        {!faveIds.includes(session.id, 0) ? (
+          <View style={styles.buttonParent}>
+            <LinearGradient
+              colors={['#cf392a', '#9963ea']}
+              start={{x: 0.0, y: 1.0}}
+              end={{x: 1.0, y: 0.0}}
+              style={[StyleSheet.absoluteFill, {...styles.button}]}
+            />
+            <Button
+              color="white"
+              title="Add To Faves"
+              onPress={() => {
+                addFaveSession(session.id);
+              }}
+            />
+          </View>
+        ) : (
+          <View style={styles.buttonParent}>
+            <LinearGradient
+              colors={['#cf392a', '#9963ea']}
+              start={{x: 0.0, y: 1.0}}
+              end={{x: 1.0, y: 0.0}}
+              style={[StyleSheet.absoluteFill, {...styles.button}]}
+            />
+            <Button
+              color="white"
+              title="Remove From Faves"
+              onPress={() => {
+                removeFaveSession(session.id);
+              }}
+            />
+          </View>
+        )}
+      </View>
     </View>
   );
 };

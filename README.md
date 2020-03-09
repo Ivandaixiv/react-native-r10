@@ -7,3 +7,5 @@ TODO List
 {/_ TODO MAKE THESE INTO BUTTONS INSTEAD OF TOUCHABLEOPACITY _/}
 {/_ TODO gesture on android to slide down the modal and add the x button _/}
 /_ TODO Put this query in its own variable _/
+font sizes
+android side
