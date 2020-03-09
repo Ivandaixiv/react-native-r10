@@ -33,18 +33,20 @@ const Session = ({
       <Text style={styles.title}>{session.title}</Text>
       <Text style={styles.time}>{moment(session.startTime).format('LT')}</Text>
       <Text style={styles.description}>{session.description}</Text>
-      <Text style={styles.grayText}>Presented By: </Text>
-      <TouchableOpacity
-        style={styles.speaker}
-        onPress={() => {
-          navigation.navigate('Speaker', {speaker: session.speaker});
-        }}>
-        <Image
-          source={{uri: `${session.speaker.image}`}}
-          style={styles.profile}
-        />
-        <Text>{session.speaker.name}</Text>
-      </TouchableOpacity>
+      {session.speaker && <Text style={styles.grayText}>Presented By: </Text>}
+      {session.speaker ? (
+        <TouchableOpacity
+          style={styles.speaker}
+          onPress={() => {
+            navigation.navigate('Speaker', {speaker: session.speaker});
+          }}>
+          <Image
+            source={{uri: `${session.speaker.image}`}}
+            style={styles.profile}
+          />
+          <Text>{session.speaker.name}</Text>
+        </TouchableOpacity>
+      ) : null}
       <View style={styles.buttonContainer}>
         {!faveIds.includes(session.id, 0) ? (
           <View style={styles.buttonParent}>
