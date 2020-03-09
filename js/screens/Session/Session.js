@@ -17,7 +17,6 @@ const Session = ({
   navigation,
   faveIds,
   addFaveSession,
-  getFavedSessionIds,
   removeFaveSession,
 }) => {
   return (
@@ -38,7 +37,9 @@ const Session = ({
         <TouchableOpacity
           style={styles.speaker}
           onPress={() => {
-            navigation.navigate('Speaker', {speaker: session.speaker});
+            navigation.navigate('Speaker', {
+              speaker: session.speaker,
+            });
           }}>
           <Image
             source={{uri: `${session.speaker.image}`}}

@@ -6,12 +6,16 @@ const styles = StyleSheet.create({
   headerText: {
     color: 'white',
     alignSelf: 'center',
-    marginTop: 75,
+    marginTop: 15,
     marginBottom: 50,
     fontSize: 18,
   },
   speaker: {
     margin: 15,
+  },
+  close: {
+    marginTop: 50,
+    marginLeft: 20,
   },
   profile: {
     height: 100,

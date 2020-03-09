@@ -39,6 +39,6 @@ Increased understanding on using React Native and GraphQL to develop mobile appl
 
 {/_ TODO gesture on android to slide down the modal and add the x button _/}
 font sizes
+remove extraneous code
 android side
-README file
 Button on the speaker page
