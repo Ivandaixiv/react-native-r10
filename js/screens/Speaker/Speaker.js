@@ -12,7 +12,6 @@ import styles from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Speaker = ({speaker, navigation}) => {
-  console.log('Speaker.js:', navigation);
   return (
     <View>
       <View style={styles.header}>

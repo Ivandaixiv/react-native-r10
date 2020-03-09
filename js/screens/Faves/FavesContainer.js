@@ -33,9 +33,6 @@ class FavesContainer extends Component {
             {({loading, error, data}) => {
               if (loading) return <Loader />;
               if (error) return <Text>{error}</Text>;
-              console.log('This is the data: ', data);
-              console.log('This is the props: ', this.props);
-              console.log('This is the faveIds: ', faveIds);
               const favedSessions = data.allSessions.filter(session =>
                 faveIds.includes(session.id),
               );

@@ -36,8 +36,3 @@ Increased understanding on using React Native and GraphQL to develop mobile appl
 ## Author
 
 - Ivan - https://github.com/Ivandaixiv
-
-{/_ TODO gesture on android to slide down the modal _/}
-font sizes
-remove extraneous code
-android side

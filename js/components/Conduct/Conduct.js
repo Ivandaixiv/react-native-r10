@@ -37,7 +37,6 @@ const Conduct = ({item}) => {
     };
 
     if (isOpen === false) {
-      console.log('Opens Text');
       spinIcon.setValue(0);
       LayoutAnimation.configureNext({
         duration: 200,
@@ -64,7 +63,6 @@ const Conduct = ({item}) => {
       ]).start();
       setOpen(true);
     } else {
-      console.log('Closes Text');
       spinIcon.setValue(0);
       LayoutAnimation.configureNext({
         duration: 200,

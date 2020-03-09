@@ -6,7 +6,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import formatSessionData from '../../config/helper';
 
 const Faves = ({faveIds, navigation, sessions}) => {
-  console.log('sessions:', sessions);
   return sessions.length <= 0 ? (
     <View style={styles.empty}>
       <Text>You haven't faved any sessions yet.</Text>
@@ -36,15 +35,9 @@ const Faves = ({faveIds, navigation, sessions}) => {
             </TouchableOpacity>
           ) : null
         }
-        renderSectionHeader={
-          ({section}) => (
-            // section.data.includes(faveIds, 0) ? (
-            <Text style={styles.time}>
-              {moment(section.title).format('LT')}
-            </Text>
-          )
-          // ) : null
-        }
+        renderSectionHeader={({section}) => (
+          <Text style={styles.time}>{moment(section.title).format('LT')}</Text>
+        )}
         stickySectionHeadersEnabled={false}
         keyExtractor={item => item.id}
       />
