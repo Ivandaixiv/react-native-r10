@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Button, Platform} from 'react-native';
+import {StyleSheet, View, Platform} from 'react-native';
 import {Header} from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

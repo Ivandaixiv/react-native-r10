@@ -50,37 +50,37 @@ const Session = ({
       ) : null}
       <View style={styles.buttonContainer}>
         {!faveIds.includes(session.id, 0) ? (
-          <View style={styles.buttonParent}>
+          <TouchableOpacity style={styles.buttonParent}>
             <LinearGradient
               colors={['#cf392a', '#9963ea']}
               start={{x: 0.0, y: 1.0}}
               end={{x: 1.0, y: 0.0}}
               style={[StyleSheet.absoluteFill, {...styles.button}]}
             />
-            <Button
-              color="white"
-              title="Add To Faves"
+            <Text
+              style={styles.buttonText}
               onPress={() => {
                 addFaveSession(session.id);
-              }}
-            />
-          </View>
+              }}>
+              Add To Faves
+            </Text>
+          </TouchableOpacity>
         ) : (
-          <View style={styles.buttonParent}>
+          <TouchableOpacity style={styles.buttonParent}>
             <LinearGradient
               colors={['#cf392a', '#9963ea']}
               start={{x: 0.0, y: 1.0}}
               end={{x: 1.0, y: 0.0}}
               style={[StyleSheet.absoluteFill, {...styles.button}]}
             />
-            <Button
-              color="white"
-              title="Remove From Faves"
+            <Text
+              style={styles.buttonText}
               onPress={() => {
                 removeFaveSession(session.id);
-              }}
-            />
-          </View>
+              }}>
+              Remove From Faves
+            </Text>
+          </TouchableOpacity>
         )}
       </View>
     </View>

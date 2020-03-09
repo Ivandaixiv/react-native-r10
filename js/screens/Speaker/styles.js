@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
   headerText: {
     color: 'white',
     alignSelf: 'center',
-    marginTop: 15,
     marginBottom: 50,
     fontSize: 18,
   },
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
     margin: 15,
   },
   close: {
-    marginTop: 50,
+    marginTop: 40,
     marginLeft: 20,
   },
   profile: {
@@ -22,6 +21,12 @@ const styles = StyleSheet.create({
     width: 100,
     borderRadius: 50,
     alignSelf: 'center',
+  },
+  buttonText: {
+    fontSize: 18,
+    padding: 5,
+    alignSelf: 'center',
+    color: 'white',
   },
   speakerName: {
     fontSize: 26,

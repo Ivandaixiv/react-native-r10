@@ -37,8 +37,8 @@ Increased understanding on using React Native and GraphQL to develop mobile appl
 
 - Ivan - https://github.com/Ivandaixiv
 
-{/_ TODO gesture on android to slide down the modal and add the x button _/}
+{/_ TODO gesture on android to slide down the modal _/}
 font sizes
 remove extraneous code
+android icons for menu
 android side
-Button on the speaker page

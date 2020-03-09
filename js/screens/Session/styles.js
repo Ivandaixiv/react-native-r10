@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     marginBottom: 10,
   },
+  buttonText: {
+    fontSize: 18,
+    padding: 5,
+    alignSelf: 'center',
+    color: 'white',
+  },
   speaker: {
     flexDirection: 'row',
     alignItems: 'center',

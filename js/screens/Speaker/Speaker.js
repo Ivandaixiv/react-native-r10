@@ -30,21 +30,21 @@ const Speaker = ({speaker, navigation}) => {
         <Image source={{uri: `${speaker.image}`}} style={styles.profile} />
         <Text style={styles.speakerName}>{speaker.name}</Text>
         <Text style={styles.bio}>{speaker.bio}</Text>
-        <View style={styles.buttonParent}>
+        <TouchableOpacity style={styles.buttonParent}>
           <LinearGradient
             colors={['#cf392a', '#9963ea']}
             start={{x: 0.0, y: 1.0}}
             end={{x: 1.0, y: 0.0}}
             style={[StyleSheet.absoluteFill, {...styles.button}]}
           />
-          <Button
-            color="white"
-            title="Read More on Wikipedia"
+          <Text
+            style={styles.buttonText}
             onPress={() => {
               Linking.openURL(speaker.url);
-            }}
-          />
-        </View>
+            }}>
+            Read More on Wikipedia
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
