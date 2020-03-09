@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  title: {
+    fontWeight: '700',
+  },
   time: {
     paddingLeft: 10,
     backgroundColor: '#e6e6e6',

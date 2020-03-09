@@ -21,7 +21,7 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
             }}>
             <>
               <View>
-                <Text>{item.title}</Text>
+                <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.location}>{item.location}</Text>
               </View>
               <Text>

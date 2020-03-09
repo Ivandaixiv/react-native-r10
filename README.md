@@ -40,5 +40,4 @@ Increased understanding on using React Native and GraphQL to develop mobile appl
 {/_ TODO gesture on android to slide down the modal _/}
 font sizes
 remove extraneous code
-android plus and minus
 android side
