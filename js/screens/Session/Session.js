@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Button,
-  StyleSheet,
-} from 'react-native';
+import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
+import PropTypes from 'prop-types';
 
 const Session = ({
   session,
@@ -86,4 +80,13 @@ const Session = ({
     </View>
   );
 };
+
+Session.propTypes = {
+  session: PropTypes.object,
+  navigation: PropTypes.object,
+  faveIds: PropTypes.arrayOf(PropTypes.string),
+  addFaveSession: PropTypes.func,
+  removeFaveSession: PropTypes.func,
+};
+
 export default Session;
