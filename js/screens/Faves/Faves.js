@@ -4,6 +4,7 @@ import styles from './styles';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatSessionData from '../../config/helper';
+import PropTypes from 'prop-types';
 
 const Faves = ({faveIds, navigation, sessions}) => {
   return sessions.length <= 0 ? (
@@ -44,4 +45,11 @@ const Faves = ({faveIds, navigation, sessions}) => {
     </View>
   );
 };
+
+Faves.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.func),
+  faveIds: PropTypes.arrayOf(PropTypes.string),
+  allSessions: PropTypes.arrayOf(PropTypes.object),
+};
+
 export default Faves;
