@@ -4,8 +4,9 @@ import styles from './styles';
 import moment from 'moment';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatSessionData from '../../config/helper';
+import PropTypes from 'prop-types';
 
-const Schedule = ({faveIds, navigation, allSessions}) => {
+const Schedule = ({allSessions, navigation, faveIds}) => {
   return (
     <View>
       <SectionList
@@ -40,5 +41,11 @@ const Schedule = ({faveIds, navigation, allSessions}) => {
       />
     </View>
   );
+};
+
+Schedule.propTypes = {
+  navigation: PropTypes.objectOf(PropTypes.func),
+  faveIds: PropTypes.arrayOf(PropTypes.string),
+  allSessions: PropTypes.arrayOf(PropTypes.object),
 };
 export default Schedule;
