@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, Platform, Image, View} from 'react-native';
-import MapView from 'react-native-maps';
+import {Image} from 'react-native';
 import {Marker} from 'react-native-maps';
+import MapView from 'react-native-maps';
 import styles from './styles';
 
 const Map = () => {
-  return Platform.OS === 'ios' ? (
+  return (
     <MapView
       style={styles.map}
       region={{
@@ -19,10 +19,6 @@ const Map = () => {
         <Image source={require('../../assets/images/map_pin.png')} />
       </Marker>
     </MapView>
-  ) : (
-    <View style={styles.android}>
-      <Text>This feature is coming to Android soon!</Text>
-    </View>
   );
 };
 export default Map;
